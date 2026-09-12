@@ -1,0 +1,19 @@
+{
+  "name": "@intelena/leak-score-cli",
+  "version": "0.1.0",
+  "description": "CLI for @intelena/leak-score — score a route from your terminal.",
+  "license": "MIT",
+  "type": "module",
+  "bin": { "leak-score": "./dist/cli.js" },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@intelena/leak-score": "workspace:*"
+  },
+  "repository": { "type": "git", "url": "https://github.com/intelena/leak-score", "directory": "packages/cli" }
+}

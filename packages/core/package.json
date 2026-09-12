@@ -1,0 +1,44 @@
+{
+  "name": "@intelena/leak-score",
+  "version": "0.1.0",
+  "description": "Pre-trade exposure scoring for on-chain orders: how much a route reveals, and to whom.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./adapters/anthropic-tool": {
+      "types": "./dist/adapters/anthropic-tool.d.ts",
+      "import": "./dist/adapters/anthropic-tool.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "privacy",
+    "mev",
+    "dex",
+    "routing",
+    "dark-pool",
+    "leak-score",
+    "intelena"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/intelena/leak-score",
+    "directory": "packages/core"
+  }
+}

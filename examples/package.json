@@ -1,0 +1,1 @@
+{ "name": "leak-score-examples", "private": true, "type": "module", "dependencies": { "@intelena/leak-score": "workspace:*" } }
