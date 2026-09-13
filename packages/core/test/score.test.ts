@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { labelFor, scoreRoute, sweep } from "../src/index.js";
 
-const base = { sellAsset: "rHOOD", buyAsset: "USDG", amount: 250 };
+const base = { sellAsset: "TSLA", buyAsset: "USDG", amount: 250 };
 
 describe("scoreRoute", () => {
 	it("is deterministic for the same input", () => {
@@ -60,6 +60,6 @@ describe("scoreRoute", () => {
 
 	it("rejects invalid intents", () => {
 		expect(() => scoreRoute({ ...base, amount: 0, exposure: 50 })).toThrow(RangeError);
-		expect(() => scoreRoute({ ...base, buyAsset: "rHOOD", exposure: 50 })).toThrow(RangeError);
+		expect(() => scoreRoute({ ...base, buyAsset: "TSLA", exposure: 50 })).toThrow(RangeError);
 	});
 });

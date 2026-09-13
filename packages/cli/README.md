@@ -1,7 +1,7 @@
 # @intelena/leak-score-cli
 
 ```bash
-npx @intelena/leak-score-cli --sell 250 rHOOD --buy USDG --exposure 70
+npx @intelena/leak-score-cli --sell 250 TSLA --buy USDG --exposure 70
 leak-score --sell 2 ETH --buy USDG --sweep --json
 ```
 

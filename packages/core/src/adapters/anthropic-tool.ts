@@ -17,7 +17,7 @@ export const leakScoreTool = {
 		type: "object",
 		additionalProperties: false,
 		properties: {
-			sellAsset: { type: "string", description: "Asset being sold, e.g. rHOOD" },
+			sellAsset: { type: "string", description: "Asset being sold, e.g. TSLA" },
 			buyAsset: { type: "string", description: "Asset being bought, e.g. USDG" },
 			amount: { type: "number", exclusiveMinimum: 0, description: "Size in sellAsset units" },
 			exposure: { type: "integer", minimum: 0, maximum: 100, description: "0 = best price, 100 = least exposure" },

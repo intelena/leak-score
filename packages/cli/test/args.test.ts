@@ -4,10 +4,10 @@ import { parseArgs } from "../src/args.js";
 
 describe("parseArgs", () => {
 	it("parses a basic intent", () => {
-		const p = parseArgs(["--sell", "250", "rHOOD", "--buy", "USDG", "--exposure", "70"]);
+		const p = parseArgs(["--sell", "250", "TSLA", "--buy", "USDG", "--exposure", "70"]);
 		expect("help" in p).toBe(false);
 		if ("help" in p) return;
-		expect(p.intent).toEqual({ amount: 250, sellAsset: "rHOOD", buyAsset: "USDG", exposure: 70 });
+		expect(p.intent).toEqual({ amount: 250, sellAsset: "TSLA", buyAsset: "USDG", exposure: 70 });
 	});
 	it("returns help when required args are missing", () => {
 		expect("help" in parseArgs([])).toBe(true);

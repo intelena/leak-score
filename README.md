@@ -5,11 +5,11 @@
 Part of [Intelena](https://intelena.app) — dark routing on Robinhood Chain. The model is deliberately small and fully specified in [SPEC.md](./SPEC.md) so anyone can audit the number.
 
 ```
-Sell 250 rHOOD → USDG   exposure 70
+Sell 250 TSLA → USDG   exposure 70
 
 Leak Score   27/100  (moderate)
-Dark cross  █████████████████░░░░░░░  69%  172.5000 rHOOD at midpoint
-Public leg  ███████░░░░░░░░░░░░░░░░░  31%  77.5000 rHOOD in 7 pieces
+Dark cross  █████████████████░░░░░░░  69%  172.5000 TSLA at midpoint
+Public leg  ███████░░░░░░░░░░░░░░░░░  31%  77.5000 TSLA in 7 pieces
 Price vs mid -0.019%   ETA 8–15 min
 
 Factors
@@ -33,7 +33,7 @@ Factors
 import { scoreRoute, sweep } from "@intelena/leak-score";
 
 const report = scoreRoute(
-  { sellAsset: "rHOOD", buyAsset: "USDG", amount: 250, exposure: 70 },
+  { sellAsset: "TSLA", buyAsset: "USDG", amount: 250, exposure: 70 },
   { darkDepth: 500, publicDepth: 5000, addressFreshness: 1 },
 );
 
@@ -44,7 +44,7 @@ report.pieces;        // [{ share, amount, delaySeconds }, …]
 report.factors;       // [{ key: "public-share", points: 17, detail: "…" }, …]
 
 // Every step of the "best price ↔ least exposure" slider:
-const curve = sweep({ sellAsset: "rHOOD", buyAsset: "USDG", amount: 250 });
+const curve = sweep({ sellAsset: "TSLA", buyAsset: "USDG", amount: 250 });
 ```
 
 Reports are deterministic: the same intent and context always produce the same route (pass `seed` to control piece randomisation).
@@ -76,10 +76,26 @@ import { leakScoreTool, runLeakScoreTool } from "@intelena/leak-score/adapters/a
 ## CLI
 
 ```bash
-npx @intelena/leak-score-cli --sell 250 rHOOD --buy USDG --exposure 70
+npx @intelena/leak-score-cli --sell 250 TSLA --buy USDG --exposure 70
 leak-score --sell 2 ETH --buy USDG --sweep
-leak-score --sell 250 rHOOD --buy USDG --json | jq .leakScore
+leak-score --sell 250 TSLA --buy USDG --json | jq .leakScore
 ```
+
+## Route Lab helpers (what the dapp's `/lab` page runs)
+
+```ts
+import { presets, interpolateImpact } from "@intelena/leak-score";
+
+// A price-impact curve you measured yourself (e.g. Uniswap QuoterV2 at 0.25×–4× size)
+const curve = [{ size: 10, impactPct: -0.1 }, { size: 40, impactPct: -0.7 }];
+
+presets({ sellAsset: "TSLA", buyAsset: "USDG", amount: 40 }, { curve, midPrice: 365 });
+// → [ { name: "Best price", exposure: 15, report, impactPct, cost }, { name: "Balanced", … }, { name: "Least exposure", … } ]
+
+interpolateImpact(curve, 25); // impact for an arbitrary public size, linear between points
+```
+
+Assets follow Robinhood Chain (chain id 4663): `ETH`, `USDG`, and stock tokens by ticker — `TSLA`, `NVDA`, `AAPL`, `MSFT`, `AMZN`, `GOOGL`, `META`, `COIN`, `SPY`, `QQQ`.
 
 ## Development
 

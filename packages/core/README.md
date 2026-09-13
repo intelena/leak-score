@@ -4,5 +4,5 @@ Pure TypeScript pre-trade exposure scoring. See the [repository README](https://
 
 ```ts
 import { scoreRoute } from "@intelena/leak-score";
-scoreRoute({ sellAsset: "rHOOD", buyAsset: "USDG", amount: 250, exposure: 70 }).leakScore; // 27
+scoreRoute({ sellAsset: "TSLA", buyAsset: "USDG", amount: 250, exposure: 70 }).leakScore; // 27
 ```

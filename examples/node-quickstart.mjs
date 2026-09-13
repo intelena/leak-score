@@ -1,7 +1,7 @@
 // pnpm build && node examples/node-quickstart.mjs
 import { bestPriceUnderLeak, explain, scoreRoute, sweep } from "@intelena/leak-score";
 
-const intent = { sellAsset: "rHOOD", buyAsset: "USDG", amount: 250 };
+const intent = { sellAsset: "TSLA", buyAsset: "USDG", amount: 250 };
 
 const r = scoreRoute({ ...intent, exposure: 70 }, { darkDepth: 500 });
 console.log(explain(r));

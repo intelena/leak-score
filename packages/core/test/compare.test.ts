@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { bestPriceUnderLeak, explain, leastLeakUnderSlippage, scoreRoute } from "../src/index.js";
 import { runLeakScoreTool, leakScoreTool } from "../src/adapters/anthropic-tool.js";
 
-const base = { sellAsset: "rHOOD", buyAsset: "USDG", amount: 250 };
+const base = { sellAsset: "TSLA", buyAsset: "USDG", amount: 250 };
 
 describe("compare", () => {
 	it("finds the lowest exposure under a leak budget", () => {

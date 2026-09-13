@@ -23,7 +23,7 @@ Options:
   -h, --help            Show this help
 
 Example:
-  leak-score --sell 250 rHOOD --buy USDG --exposure 70
+  leak-score --sell 250 TSLA --buy USDG --exposure 70
 `;
 
 export function parseArgs(argv: string[]): CliOptions | { help: string } {

@@ -1,6 +1,6 @@
 /** A swap the trader intends to execute. */
 export interface OrderIntent {
-	/** Asset being sold, e.g. "rHOOD". */
+	/** Asset being sold, e.g. "TSLA". */
 	sellAsset: string;
 	/** Asset being bought, e.g. "USDG". */
 	buyAsset: string;
